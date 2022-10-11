@@ -38,6 +38,9 @@ def signals():
   }
   
   response = requests.get('https://games.scoretrend.net/', headers=headers).text
+  print("#######")
+  print(response)
+  print("#######")
   data= json.loads(response)
   for d in data[0]:
      #pprint(d)
