@@ -3,3 +3,4 @@ schedule
 gspread
 oauth2client
 pandas
+cloudscraper
