@@ -1,5 +1,6 @@
 requests
 schedule
 gspread
-oauth2client.service_account
+oauth2client
+json
 pandas
