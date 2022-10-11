@@ -1,7 +1,5 @@
 import requests
 import json
-from pprint import pprint
-from telegram import notifSignal05,notifSignal15
 from xbet import underSearcher
 import time
 import schedule
