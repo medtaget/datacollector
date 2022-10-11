@@ -7,7 +7,7 @@ import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
 import cloudscraper
-
+import fake_useragent
 # Connect to Google Sheets
 scope = ['https://www.googleapis.com/auth/spreadsheets',
          "https://www.googleapis.com/auth/drive"]
@@ -21,7 +21,7 @@ def signals():
   sheet = client.open("bettingscraper").sheet1
   dbold=sheet.get_all_records()
   print(dbold)
-
+  ua = UserAgent()
   headers = {
       'authority': 'games.scoretrend.net',
       'accept': '*/*',
@@ -35,11 +35,11 @@ def signals():
       'sec-fetch-dest': 'empty',
       'sec-fetch-mode': 'cors',
       'sec-fetch-site': 'same-site',
-      'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.0.0 Safari/537.36',
+      'user-agent': str(ua.random),
   }
-  scraper = cloudscraper.create_scraper()
+  #scraper = cloudscraper.create_scraper()
   #r = scraper.get("MY API").text
-  response = scraper.get('https://games.scoretrend.net/', headers=headers).text
+  response = requests.get('https://games.scoretrend.net/', headers=headers).text
   print("#######")
   print(response)
   print("#######")
