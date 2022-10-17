@@ -3,5 +3,3 @@ schedule
 gspread
 oauth2client
 pandas
-cloudscraper
-fake_useragent
