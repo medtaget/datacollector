@@ -85,7 +85,7 @@ def signals ():
      l=dt['LE']
      match=dt["O1"]+' vs '+dt["O2"]
   
-     if 4200<=t:
+     if 4800<=t:
       try:
        
        print(l)
@@ -98,8 +98,8 @@ def signals ():
        for dt in data["Value"]["GE"]:
         if dt['G']==99:
          for under in dt['E'][1]:
-           sc=int(s.split(":")[0])+int(s.split(":")[1])+2.5
-           if 1.05<= under['C'] <= 1.8 and under['P']>sc:
+           sc=int(s.split(":")[0])+int(s.split(":")[1])+0.5
+           if 1.4<= under['C'] <= 1.8 and under['P']>sc:
             print('trade found')
             print(under['P'])
             print(under['C'])
