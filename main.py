@@ -6,7 +6,7 @@ import schedule
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
-
+from datetime import datetime
 # Connect to Google Sheets
 scope = ['https://www.googleapis.com/auth/spreadsheets',
          "https://www.googleapis.com/auth/drive"]
@@ -14,7 +14,7 @@ scope = ['https://www.googleapis.com/auth/spreadsheets',
 credentials = ServiceAccountCredentials.from_json_keyfile_name("gs_credentials.json", scope)
 client = gspread.authorize(credentials)
 
-score=['0:0','0:1','1:0','1:1','1:2','2:1','2:0','0:2']
+#score=['0:0','0:1','1:0','1:1','1:2','2:1','2:0','0:2']
 
 def signals ():
 
@@ -69,7 +69,7 @@ def signals ():
    }
 
      response = requests.get("https://1xbet.com/LiveFeed/GetGameZip", headers=headers,params=params).text
-
+#
      data = json.loads(response)
      g=dt['SC']['FS']
      if ('S1' in g.keys()):
@@ -85,7 +85,7 @@ def signals ():
      l=dt['LE']
      match=dt["O1"]+' vs '+dt["O2"]
   
-     if 4800<=t and s in score:
+     if 4800<=t and :
       try:
        
        print(l)
@@ -96,22 +96,31 @@ def signals ():
 
   
        for dt in data["Value"]["GE"]:
-        if dt['G']==99:
-         for under in dt['E'][1]:
-           #sc=int(s.split(":")[0])+int(s.split(":")[1])+1.5
-           if 1.3<= under['C'] <= 1.5:
+        if dt['G']==8:
+         for dc in dt['E']:
+           
+           if 1.03 <= dc['C'] <= 1.07 :
             print('trade found')
-            print(under['P'])
-            print(under['C'])
+            if dc["T"]==4:
+              b="1X"
+            elif d["T"]==5:
+              b="12"
+            elif dc["T"]==6:
+              b="X2"
+            print(b)
+            print(dc['c'])
+            
+
             
             dict={
-           "League":l,
+          "Date":datetime.now(),
+          "League":l,
           "Home" :match.split(' vs ')[0],
            "Away":match.split(' vs ')[1] ,
           "Score":s,
           "Time":round(t/60),
-          "Under":under['P'],
-          "Odd":under['C']
+          "DC":b,
+          "Odd":dc['C']
             }
             db.append(dict)
 
@@ -131,7 +140,10 @@ def signals ():
 
 schedule.every(15).seconds.do(signals)
 
+
+
 if __name__ == '__main__':
     while True:
         schedule.run_pending()
-        time.sleep(1)
+        time.sleep(1) 
+      
