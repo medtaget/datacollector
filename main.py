@@ -6,7 +6,7 @@ import schedule
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
-from datetime import datetime
+
 # Connect to Google Sheets
 scope = ['https://www.googleapis.com/auth/spreadsheets',
          "https://www.googleapis.com/auth/drive"]
@@ -113,7 +113,7 @@ def signals ():
 
             
             dict={
-          "Date":datetime.now(),
+          
           "League":l,
           "Home" :match.split(' vs ')[0],
            "Away":match.split(' vs ')[1] ,
