@@ -85,7 +85,7 @@ def signals ():
      l=dt['LE']
      match=dt["O1"]+' vs '+dt["O2"]
   
-     if 4800<=t and :
+     if 4800<=t  :
       try:
        
        print(l)
