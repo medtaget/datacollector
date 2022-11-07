@@ -97,7 +97,7 @@ def signals ():
   
        for dt in data["Value"]["GE"]:
         if dt['G']==8:
-         for dc in dt['E']:
+         for dc in dt['E'][0]:
            
            if 1.03 <= dc['C'] <= 1.07 :
             print('trade found')
@@ -108,7 +108,7 @@ def signals ():
             elif dc["T"]==6:
               b="X2"
             print(b)
-            print(dc['c'])
+            print(dc['C'])
             
 
             
