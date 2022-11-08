@@ -101,11 +101,11 @@ def signals ():
            
            if 1.03 <= dc[0]['C'] <= 1.07 :
             print('trade found')
-            if dc["T"]==4:
+            if dc[0]["T"]==4:
               b="1X"
-            elif d["T"]==5:
+            elif dc[0]["T"]==5:
               b="12"
-            elif dc["T"]==6:
+            elif dc[0]["T"]==6:
               b="X2"
             print(b)
             print(dc['C'])
