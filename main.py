@@ -108,7 +108,7 @@ def signals ():
             elif dc[0]["T"]==6:
               b="X2"
             print(b)
-            print(dc['C'])
+            print(dc[0]['C'])
             
 
             
@@ -120,7 +120,7 @@ def signals ():
           "Score":s,
           "Time":round(t/60),
           "DC":b,
-          "Odd":dc['C']
+          "Odd":dc[0]['C']
             }
             db.append(dict)
 
