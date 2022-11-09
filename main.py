@@ -105,6 +105,7 @@ def signals ():
               b="1X"
             elif dc[0]["T"]==5:
               b="12"
+              break
             elif dc[0]["T"]==6:
               b="X2"
             print(b)
