@@ -6,7 +6,7 @@ import schedule
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 import pandas as pd
-
+from telegram import notifMsg
 # Connect to Google Sheets
 scope = ['https://www.googleapis.com/auth/spreadsheets',
          "https://www.googleapis.com/auth/drive"]
@@ -85,7 +85,7 @@ def signals ():
      l=dt['LE']
      match=dt["O1"]+' vs '+dt["O2"]
   
-     if 5100<=t  :
+     if 4800<=t :
       try:
        
        print(l)
@@ -113,7 +113,6 @@ def signals ():
 
             
             dict={
-          
           "League":l,
           "Home" :match.split(' vs ')[0],
            "Away":match.split(' vs ')[1] ,
@@ -126,9 +125,10 @@ def signals ():
 
              
       except Exception as e  :
+        print(e)
         pass
   except Exception as e:
-  
+     print(e)
      pass
 
 # updating sheet
@@ -136,6 +136,11 @@ def signals ():
  dbold.extend(db)
  df = df.append(dbold, ignore_index=True) 
  dfi  = df.drop_duplicates(subset=["Home", "Away"], keep='first')
+ newdf=pd.concat([dfold,dfi]).drop_duplicates(keep=False)
+ msg=newdf.to_dict('records')
+ for m in msg:
+  notifMsg(m)
+  
  sheet.update([dfi.columns.values.tolist()] +dfi.values.tolist())
 
 schedule.every(15).seconds.do(signals)
