@@ -12,5 +12,5 @@ bot = telepot.Bot(bot_token)
 
 
 def notifMsg(d):
-  msg=d["League"]+"\n"+d["Home"]+' vs '+d["Away"]+"\n"+d["Score"]+"\n"+d["Time"]+"'"+"\n"+d["DC"]+" || "+d["Odd"]
+  msg=d["League"]+"\n"+d["Home"]+' vs '+d["Away"]+"\n"+d["Score"]+"\n"+str(d["Time"])+"'"+"\n"+str(d["DC"])+" || "+str(d["Odd"])
   bot.sendMessage(channel_id, msg )
