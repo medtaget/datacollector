@@ -132,11 +132,13 @@ def signals ():
      pass
 
 # updating sheet
+ dfold = pd.DataFrame()
+ dfold = dfold.append(dfold,ignore_index=True)
  df = pd.DataFrame()
  dbold.extend(db)
  df = df.append(dbold, ignore_index=True) 
  dfi  = df.drop_duplicates(subset=["Home", "Away"], keep='first')
- newdf=pd.concat([dbold,dfi]).drop_duplicates(keep=False)
+ newdf=pd.concat([dfold,dfi]).drop_duplicates(keep=False)
  msg=newdf.to_dict('records')
  for m in msg:
   notifMsg(m)
