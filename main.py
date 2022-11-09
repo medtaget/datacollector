@@ -133,7 +133,7 @@ def signals ():
 
 # updating sheet
  dfold = pd.DataFrame()
- dfold = dfold.append(dfold,ignore_index=True)
+ dfold = dfold.append(dbold,ignore_index=True)
  df = pd.DataFrame()
  dbold.extend(db)
  df = df.append(dbold, ignore_index=True) 
