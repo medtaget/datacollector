@@ -136,7 +136,7 @@ def signals ():
  dbold.extend(db)
  df = df.append(dbold, ignore_index=True) 
  dfi  = df.drop_duplicates(subset=["Home", "Away"], keep='first')
- newdf=pd.concat([dfold,dfi]).drop_duplicates(keep=False)
+ newdf=pd.concat([dbold,dfi]).drop_duplicates(keep=False)
  msg=newdf.to_dict('records')
  for m in msg:
   notifMsg(m)
